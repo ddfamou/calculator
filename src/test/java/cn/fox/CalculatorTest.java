@@ -28,71 +28,71 @@ public class CalculatorTest {
     public void exampleTest1() {
         Calculator calculator = new Calculator();
         calculator.run("5 2");
-        Assert.assertTrue(calculator.output().equals("stack: 5 2"));
+        Assert.assertEquals("stack: 5 2", calculator.output());
     }
 
     @Test
     public void exampleTest2() {
         Calculator calculator = new Calculator();
         calculator.run("2 sqrt");
-        Assert.assertTrue(calculator.output().equals("stack: 1.4142135623"));
+        Assert.assertEquals("stack: 1.4142135623", calculator.output());
         calculator.run("clear 9 sqrt");
-        Assert.assertTrue(calculator.output().equals("stack: 3"));
+        Assert.assertEquals("stack: 3", calculator.output());
     }
 
     @Test
     public void exampleTest3() {
         Calculator calculator = new Calculator();
         calculator.run("5 2 -");
-        Assert.assertTrue(calculator.output().equals("stack: 3"));
+        Assert.assertEquals("stack: 3", calculator.output());
         calculator.run("3 -");
-        Assert.assertTrue(calculator.output().equals("stack: 0"));
+        Assert.assertEquals("stack: 0", calculator.output());
         calculator.run("clear");
-        Assert.assertTrue(calculator.output().equals("stack:"));
+        Assert.assertEquals("stack:", calculator.output());
     }
 
     @Test
     public void exampleTest4() {
         Calculator calculator = new Calculator();
         calculator.run("5 4 3 2");
-        Assert.assertTrue(calculator.output().equals("stack: 5 4 3 2"));
+        Assert.assertEquals("stack: 5 4 3 2", calculator.output());
         calculator.run("undo undo *");
-        Assert.assertTrue(calculator.output().equals("stack: 20"));
+        Assert.assertEquals("stack: 20", calculator.output());
         calculator.run("5 *");
-        Assert.assertTrue(calculator.output().equals("stack: 100"));
+        Assert.assertEquals("stack: 100", calculator.output());
         calculator.run("undo");
-        Assert.assertTrue(calculator.output().equals("stack: 20 5"));
+        Assert.assertEquals("stack: 20 5", calculator.output());
     }
 
     @Test
     public void exampleTest5() {
         Calculator calculator = new Calculator();
         calculator.run("7 12 2 /");
-        Assert.assertTrue(calculator.output().equals("stack: 7 6"));
+        Assert.assertEquals("stack: 7 6", calculator.output());
         calculator.run("*");
-        Assert.assertTrue(calculator.output().equals("stack: 42"));
+        Assert.assertEquals("stack: 42", calculator.output());
         calculator.run("4 /");
-        Assert.assertTrue(calculator.output().equals("stack: 10.5"));
+        Assert.assertEquals("stack: 10.5", calculator.output());
     }
 
     @Test
     public void exampleTest6() {
         Calculator calculator = new Calculator();
         calculator.run("1 2 3 4 5");
-        Assert.assertTrue(calculator.output().equals("stack: 1 2 3 4 5"));
+        Assert.assertEquals("stack: 1 2 3 4 5", calculator.output());
         calculator.run("*");
-        Assert.assertTrue(calculator.output().equals("stack: 1 2 3 20"));
+        Assert.assertEquals("stack: 1 2 3 20", calculator.output());
         calculator.run("clear 3 4 -");
-        Assert.assertTrue(calculator.output().equals("stack: -1"));
+        Assert.assertEquals("stack: -1", calculator.output());
     }
 
     @Test
     public void exampleTest7() {
         Calculator calculator = new Calculator();
         calculator.run("1 2 3 4 5");
-        Assert.assertTrue(calculator.output().equals("stack: 1 2 3 4 5"));
+        Assert.assertEquals("stack: 1 2 3 4 5", calculator.output());
         calculator.run("* * * *");
-        Assert.assertTrue(calculator.output().equals("stack: 120"));
+        Assert.assertEquals("stack: 120", calculator.output());
     }
 
     @Test
@@ -129,4 +129,10 @@ public class CalculatorTest {
         Assert.assertEquals("stack: -1", calculator.output());
     }
 
+    @Test
+    public void undoTest() {
+        Calculator calculator = new Calculator();
+        calculator.run("1 undo undo");
+        Assert.assertEquals("Nothing to undo (position: 8).\n", outContent.toString());
+    }
 }

@@ -41,7 +41,7 @@ public class Calculator {
 
         // Check if it was clear
         if (input.equals("clear")) {
-            //TODO
+            //TODO if clear could be undo
             clear();
             return;
         }
@@ -79,7 +79,7 @@ public class Calculator {
         sb.append("stack:");
         for (int i = 0; i < numbers.size(); i++) {
             sb.append(' ');
-            sb.append(numbers.get(i).toString());
+            sb.append(NumberUtils.decimalToString(numbers.get(i)));
         }
         return sb.toString();
     }

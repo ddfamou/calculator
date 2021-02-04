@@ -2,6 +2,7 @@ package cn.fox.operators;
 
 import cn.fox.exceptions.NoEnoughParameterException;
 import cn.fox.exceptions.OperatorInternalException;
+import cn.fox.utils.NumberUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,7 +12,7 @@ public class SqrtOperatorTest {
     @Test
     public void getOperationNameTest() {
         SqrtOperator op = new SqrtOperator();
-        Assert.assertTrue(op.getOperatorName().equals("sqrt"));
+        Assert.assertEquals("sqrt", op.getOperatorName());
     }
 
     @Test
@@ -19,27 +20,19 @@ public class SqrtOperatorTest {
         SqrtOperator op = new SqrtOperator();
         BigDecimal ob = new BigDecimal("4");
         op.add(ob);
-        Assert.assertTrue(op.operate().equals(new BigDecimal("2")));
+        Assert.assertEquals(NumberUtils.decimalToString(op.operate()), "2");
     }
 
     @Test
     public void operateTest2() {
         SqrtOperator op = new SqrtOperator();
-        BigDecimal ob = new BigDecimal("4.0");
+        BigDecimal ob = new BigDecimal("2");
         op.add(ob);
-        Assert.assertTrue(op.operate().equals(new BigDecimal("2.0000000000")));
+        Assert.assertEquals(NumberUtils.decimalToString(op.operate()), "1.4142135623");
     }
 
     @Test
     public void operateTest3() {
-        SqrtOperator op = new SqrtOperator();
-        BigDecimal ob = new BigDecimal("2");
-        op.add(ob);
-        Assert.assertTrue(op.operate().equals(new BigDecimal("1.4142135623")));
-    }
-
-    @Test
-    public void operateTest4() {
         SqrtOperator op = new SqrtOperator();
         Assert.assertThrows(OperatorInternalException.class, () -> op.operate());
     }

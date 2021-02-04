@@ -22,20 +22,9 @@ public class SqrtOperator extends UnaryOperator {
         if (ob1.compareTo(BigDecimal.ZERO) == -1) {
             throw new NegativeSquareRootException();
         }
-        BigDecimal res = sqrtNewtonRaphson(ob1, new BigDecimal(1),
+        return sqrtNewtonRaphson(ob1, new BigDecimal(1),
                 new BigDecimal(1).divide(NumberUtils.SQRT_PRE));
 
-        /*
-        * If the input is a long value and the square root is also a long,
-        * the result should be long. For example, sqrt(4) = 2.
-        * However, if the input is a double,
-        * the square root should always be a double. For example, sqrt(4.0) = 2.0000000
-        * */
-        if (!NumberUtils.isDouble(ob1) && NumberUtils.isLong(res)) {
-            return new BigDecimal(res.toBigInteger());
-        } else {
-            return res.setScale(NumberUtils.SQRT_DIG.intValue(), CalculatorConst.ROUND_WAY);
-        }
     }
 
     // Using JDk8 with no BigDecimal.sqrt function

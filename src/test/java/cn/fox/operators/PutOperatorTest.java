@@ -10,7 +10,7 @@ public class PutOperatorTest {
     @Test
     public void getOperationNameTest() {
         PutOperator op = new PutOperator();
-        Assert.assertTrue(op.getOperatorName().equals("Push"));
+        Assert.assertEquals("Push", op.getOperatorName());
     }
 
     @Test
