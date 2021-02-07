@@ -135,4 +135,16 @@ public class CalculatorTest {
         calculator.run("1 undo undo");
         Assert.assertEquals("Nothing to undo (position: 8).\n", outContent.toString());
     }
+
+    @Test
+    /*
+     * this test only available for cle
+     */
+    public void clearTest() {
+        Calculator calculator = new Calculator();
+        calculator.run("1 2 3 clear");
+        Assert.assertEquals("stack:", calculator.output());
+        calculator.run("undo");
+        Assert.assertEquals("stack: 1 2 3", calculator.output());
+    }
 }

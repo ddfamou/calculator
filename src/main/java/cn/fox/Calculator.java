@@ -41,8 +41,12 @@ public class Calculator {
 
         // Check if it was clear
         if (input.equals("clear")) {
-            //TODO if clear could be undo
-            clear();
+            /*
+            * if clear is a function that could be undo, please use clear2()
+            * if clear is a function to clear all numbers in stack and all previous operators, please use clear()
+            * */
+//            clear();
+            clear2();
             return;
         }
 
@@ -58,6 +62,14 @@ public class Calculator {
     private void clear() {
         this.numbers.clear();
         this.operators.clear();
+    }
+
+    private void clear2() {
+        Operator op = new ClearOperator();
+        while (!numbers.isEmpty()) {
+            op.add(numbers.pop());
+        }
+        this.operators.add(op);
     }
 
     public void append(String[] inputs) {
@@ -90,7 +102,11 @@ public class Calculator {
             throw new NothingUndoException();
         }
         Operator op = operators.pop();
-        numbers.pop();
+        if (op instanceof ClearOperator) {
+
+        } else {
+            numbers.pop();
+        }
         List<BigDecimal> obs = op.undo();
         for (int i = obs.size() - 1; i >= 0; i--) {
             numbers.push(obs.get(i));
@@ -124,7 +140,4 @@ public class Calculator {
     public void run(String line) {
         append(line.split(" "));
     }
-
-
-
 }
