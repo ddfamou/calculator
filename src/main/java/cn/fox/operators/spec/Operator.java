@@ -9,13 +9,16 @@ public interface Operator {
     void add(BigDecimal ob);
 
     // Do the operation, return result
-    BigDecimal operate();
+    List<BigDecimal> operate();
 
     // Undo operate
     List<BigDecimal> undo();
 
     // Number of inputs
     int numOfInputs();
+
+    // Number of outputs
+    int numOfOutputs();
 
     // Get the operator name.
     String getOperatorName();

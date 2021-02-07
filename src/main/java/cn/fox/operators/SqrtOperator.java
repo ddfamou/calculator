@@ -2,6 +2,8 @@ package cn.fox.operators;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.fox.consts.CalculatorConst;
 import cn.fox.exceptions.NegativeSquareRootException;
@@ -16,15 +18,16 @@ public class SqrtOperator extends UnaryOperator {
     }
 
     @Override
-    public BigDecimal operate() {
+    public List<BigDecimal> operate() {
         super.validate();
         BigDecimal ob1 = obs.get(0);
+        List<BigDecimal> res = new ArrayList<>();
         if (ob1.compareTo(BigDecimal.ZERO) == -1) {
             throw new NegativeSquareRootException();
         }
-        return sqrtNewtonRaphson(ob1, new BigDecimal(1),
-                new BigDecimal(1).divide(NumberUtils.SQRT_PRE));
-
+        res.add(sqrtNewtonRaphson(ob1, new BigDecimal(1),
+                new BigDecimal(1).divide(NumberUtils.SQRT_PRE)));
+        return res;
     }
 
     // Using JDk8 with no BigDecimal.sqrt function

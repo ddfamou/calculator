@@ -31,4 +31,9 @@ public abstract class NoOperator implements Operator {
     public List<BigDecimal> undo() {
         return new ArrayList<>();
     }
+
+    @Override
+    public int numOfOutputs() {
+        return 1;
+    }
 }

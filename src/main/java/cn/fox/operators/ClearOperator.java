@@ -38,7 +38,13 @@ public class ClearOperator implements Operator {
     }
 
     @Override
-    public BigDecimal operate() {
+    public List<BigDecimal> operate() {
         throw new OperatorInternalException("clear operator.operate should not be called");
+    }
+
+    @Override
+    public int numOfOutputs() {
+        // Clear operator has no output
+        return 0;
     }
 }

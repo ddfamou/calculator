@@ -19,7 +19,7 @@ public class MinusOperatorTest {
         BigDecimal ob2 = new BigDecimal("2");
         op.add(ob1);
         op.add(ob2);
-        Assert.assertTrue(op.operate().equals(new BigDecimal("1")));
+        Assert.assertTrue(op.operate().get(0).equals(new BigDecimal("1")));
     }
 
     @Test
@@ -29,7 +29,7 @@ public class MinusOperatorTest {
         BigDecimal ob2 = new BigDecimal("2");
         op.add(ob1);
         op.add(ob2);
-        Assert.assertTrue(op.operate().equals(new BigDecimal("1.0")));
+        Assert.assertTrue(op.operate().get(0).equals(new BigDecimal("1.0")));
     }
 
     @Test
@@ -39,6 +39,6 @@ public class MinusOperatorTest {
         BigDecimal ob2 = new BigDecimal("2.00");
         op.add(ob1);
         op.add(ob2);
-        Assert.assertTrue(op.operate().equals(new BigDecimal("1.00")));
+        Assert.assertTrue(op.operate().get(0).equals(new BigDecimal("1.00")));
     }
 }

@@ -41,4 +41,9 @@ public abstract class UnaryOperator implements Operator {
     public List<BigDecimal> undo() {
         return obs;
     }
+
+    @Override
+    public int numOfOutputs() {
+        return 1;
+    }
 }

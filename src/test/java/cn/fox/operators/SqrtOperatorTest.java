@@ -1,6 +1,5 @@
 package cn.fox.operators;
 
-import cn.fox.exceptions.NoEnoughParameterException;
 import cn.fox.exceptions.OperatorInternalException;
 import cn.fox.utils.NumberUtils;
 import org.junit.Assert;
@@ -20,7 +19,7 @@ public class SqrtOperatorTest {
         SqrtOperator op = new SqrtOperator();
         BigDecimal ob = new BigDecimal("4");
         op.add(ob);
-        Assert.assertEquals(NumberUtils.decimalToString(op.operate()), "2");
+        Assert.assertEquals(NumberUtils.decimalToString(op.operate().get(0)), "2");
     }
 
     @Test
@@ -28,7 +27,7 @@ public class SqrtOperatorTest {
         SqrtOperator op = new SqrtOperator();
         BigDecimal ob = new BigDecimal("2");
         op.add(ob);
-        Assert.assertEquals(NumberUtils.decimalToString(op.operate()), "1.4142135623");
+        Assert.assertEquals(NumberUtils.decimalToString(op.operate().get(0)), "1.4142135623");
     }
 
     @Test

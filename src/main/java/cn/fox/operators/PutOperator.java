@@ -1,6 +1,7 @@
 package cn.fox.operators;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class PutOperator extends NoOperator {
 
@@ -12,7 +13,7 @@ public class PutOperator extends NoOperator {
     }
 
     @Override
-    public BigDecimal operate() {
+    public List<BigDecimal> operate() {
         return null;
     }
 

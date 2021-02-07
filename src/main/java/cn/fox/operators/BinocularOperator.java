@@ -41,6 +41,10 @@ public abstract class BinocularOperator implements Operator {
         return obs;
     }
 
-
+    @Override
+    public int numOfOutputs() {
+        // Default has only 1 output
+        return 1;
+    }
 
 }

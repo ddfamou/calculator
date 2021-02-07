@@ -20,7 +20,7 @@ public class DivideOperatorTest {
         BigDecimal ob2 = new BigDecimal("2");
         op.add(ob1);
         op.add(ob2);
-        Assert.assertTrue(op.operate().equals(new BigDecimal("2")));
+        Assert.assertTrue(op.operate().get(0).equals(new BigDecimal("2")));
     }
 
 
@@ -31,7 +31,7 @@ public class DivideOperatorTest {
         BigDecimal ob2 = new BigDecimal("1");
         op.add(ob1);
         op.add(ob2);
-        Assert.assertTrue(op.operate().equals(new BigDecimal("0.5")));
+        Assert.assertTrue(op.operate().get(0).equals(new BigDecimal("0.5")));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class DivideOperatorTest {
         BigDecimal ob2 = new BigDecimal("1");
         op.add(ob1);
         op.add(ob2);
-        Assert.assertEquals(op.operate().setScale(10, BigDecimal.ROUND_DOWN).toString(), "0.3333333333");
+        Assert.assertEquals(op.operate().get(0).setScale(10, BigDecimal.ROUND_DOWN).toString(), "0.3333333333");
     }
 
     @Test

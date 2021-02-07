@@ -102,11 +102,11 @@ public class Calculator {
             throw new NothingUndoException();
         }
         Operator op = operators.pop();
-        if (op instanceof ClearOperator) {
 
-        } else {
+        for (int i = 0; i < op.numOfOutputs();i++) {
             numbers.pop();
         }
+
         List<BigDecimal> obs = op.undo();
         for (int i = obs.size() - 1; i >= 0; i--) {
             numbers.push(obs.get(i));
@@ -124,13 +124,17 @@ public class Calculator {
         }
         operators.push(op);
         try {
-            numbers.push(op.operate());
+            for (BigDecimal out : op.operate()) {
+                numbers.push(out);
+            }
         } catch (OperationException e) {
             /*
              * if there was an operation error, such as a/0 or sqrt(-1)
              * we push an number in and call undo t
              */
-            numbers.push(BigDecimal.ZERO);
+            for (int i = 0; i < op.numOfOutputs(); i++) {
+                numbers.push(BigDecimal.ZERO);
+            }
             undo();
             throw e;
         }
